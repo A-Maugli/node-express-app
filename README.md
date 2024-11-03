@@ -110,3 +110,6 @@ Press buton "Login"
 ```
 
 Note: This Express sample web server doesn't check the password.
+
+Reference: https://github.com/PacktPublishing/Mastering-TypeScript-Fourth-Edition/tree/main/ch14/node-express-app
+
