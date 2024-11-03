@@ -32,6 +32,18 @@ const Index = __importStar(require("./routes/index"));
 const Login = __importStar(require("./routes/login"));
 app.use('/', Index.router);
 app.use('/', Login.router);
-app.listen(3000, () => {
-    console.log(`listening on port 3000`);
+const config_1 = __importDefault(require("config"));
+var ConfigOptions;
+(function (ConfigOptions) {
+    ConfigOptions["PORT"] = "port";
+})(ConfigOptions || (ConfigOptions = {}));
+let port = 3000;
+if (config_1.default.has(ConfigOptions.PORT)) {
+    port = config_1.default.get(ConfigOptions.PORT);
+}
+else {
+    console.log(`no port config found, using default port ${port}`);
+}
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 });
