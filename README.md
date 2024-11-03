@@ -2,13 +2,13 @@
 A quick tour of Node and Express
 
 * First, a minimal Web server app was created, see tag `minimal_app`
-* Then routing was added, see tag `routing`
-* For configuration setting, see tag `config`
+* Then routing was added, see tag `minimal_app_with_routing`
+* For configuration setting, see tag `minimal_app_with_config`
 * Then templating was shown, using Handlebars template engine, see tag `templating`
 * Static file serving was then shown, see tag `static_files`
 * For form handling, see tag `forms1`
 
-Now, session handling and redirection will be added
+Now, session handling and redirection will be added.
 
 ## Session handling 
 
@@ -76,7 +76,8 @@ Modify `views/index.hbs` to display the logged in user:
 
 Modify `routes/index.ts` to read `username` from session data:
 ```
-
+    username: (<ISessionData>req.session).username
+```
 
 ## After checkout
 
