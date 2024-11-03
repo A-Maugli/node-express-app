@@ -36,6 +36,12 @@ app.set('view engine', 'hbs');
 const body_parser_1 = __importDefault(require("body-parser"));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
+const express_session_1 = __importDefault(require("express-session"));
+app.use((0, express_session_1.default)({
+    secret: 'asdfghjkl',
+    resave: false,
+    saveUninitialized: true,
+}));
 app.use('/', Index.router);
 app.use('/', Login.router);
 const config_1 = __importDefault(require("config"));

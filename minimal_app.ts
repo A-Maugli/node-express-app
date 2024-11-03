@@ -13,6 +13,16 @@ import bodyParser from 'body-parser';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+import expressSession from 'express-session';
+
+app.use(expressSession(
+    {
+        secret: 'asdfghjkl',
+        resave: false,
+        saveUninitialized: true,
+    }
+));
+
 app.use('/', Index.router);
 app.use('/', Login.router);
 

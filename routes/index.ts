@@ -1,4 +1,5 @@
 import express from "express";
+import { ISessionData } from "./SessionData";
 
 let router = express.Router();
 
@@ -11,6 +12,7 @@ router.get('/',
             {
                 welcomeMsg: 'Welcome to the Express App',
                 title: 'Express App',
+                username: (<ISessionData>req.session).username,
             }
         )
     });

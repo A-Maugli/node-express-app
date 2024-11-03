@@ -13,5 +13,18 @@ router.get('/login', (req, res) => {
     });
 });
 router.post(`/login`, (req, res, next) => {
+    var _a;
     console.log(`req.body.username : ${req.body.username}`);
+    if (((_a = req.body.username) === null || _a === void 0 ? void 0 : _a.length) > 0) {
+        console.log(`found body.name`);
+        req.session.username =
+            req.body.username;
+        res.redirect(`/`);
+    }
+    else {
+        res.render(`login`, {
+            title: `Express Login`,
+            errorMessage: `Please enter a username and password`
+        });
+    }
 });

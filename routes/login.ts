@@ -1,4 +1,5 @@
 import express from "express";
+import { ISessionData } from "./SessionData";
 
 let router = express.Router();
 
@@ -19,6 +20,17 @@ router.post(`/login`,
         next: express.NextFunction
     ) => {
         console.log(`req.body.username : ${req.body.username}`);
+        if (req.body.username?.length > 0) {
+            console.log(`found req.body.username`);
+            (<ISessionData>req.session).username =
+                req.body.username;
+            res.redirect(`/`);
+        } else {
+            res.render(`login`, {
+                title: `Express Login`,
+                errorMessage: `Please enter a username and password`
+            })
+        }
     });
 
 export { router };
