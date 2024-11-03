@@ -10,5 +10,6 @@ exports.router = router;
 router.get('/', (req, res) => {
     res.render('index', {
         welcomeMsg: 'Welcome to the Express App',
+        title: 'Express App',
     });
 });

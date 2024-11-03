@@ -8,5 +8,10 @@ const express_1 = __importDefault(require("express"));
 let router = express_1.default.Router();
 exports.router = router;
 router.get('/login', (req, res) => {
-    res.send(`Login module processed ${req.url}`);
+    res.render('login', {
+        title: 'Express Login'
+    });
+});
+router.post(`/login`, (req, res, next) => {
+    console.log(`req.body.username : ${req.body.username}`);
 });

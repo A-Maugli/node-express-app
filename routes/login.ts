@@ -7,7 +7,18 @@ router.get('/login',
         req: express.Request,
         res: express.Response
     ) => {
-        res.send(`Login module processed ${req.url}`);
+        res.render('login', {
+            title: 'Express Login'
+        });
+    });
+
+router.post(`/login`,
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction
+    ) => {
+        console.log(`req.body.username : ${req.body.username}`);
     });
 
 export { router };

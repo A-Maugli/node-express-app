@@ -1,22 +1,34 @@
 # node-express-app
 A quick tour of Node and Express
 
-Minimal web server app with templating and static files
+* First, a minimal Web server app was created, see tag `minimal_app`
+* Then routing was added, see tag `routing`
+* For configuration setting, see tag `config`
+* Then templating was shown, using Handlebars tempale engine, see tag `templating`
+* Static file serving was then shown, see tag `static_files`
 
-The bootstrap module was installed:
+Now comes form handling.
+
+`routes/login.ts` was modified, to use a template:
 ```
-npm install bootstrap
+        res.render('login', {
+            title: 'Express Login'
+        });
 ```
 
-The handlebars template files are in the `./views` directory.
-The `minimal_app.ts` was changed to serve static files from the `resources` directory:
+`views/login.hbs` was created. The template uses a HTML form
+
+The body-parser node module was installed:
 ```
-app.use(express.static(path.join(__dirname, 'resources')))
+npm install body-parser
 ```
 
-`bootstrap.css` was copied to `resources\css`:
+`minimal_app.ts` was modified to parse POST results coming from the
+HTML form of the login:
 ```
-cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./resources/css
+import bodyParser from 'body-parser';
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 ```
 
 After cloning this repository, install node.js modules:
@@ -32,12 +44,18 @@ npx tsc
 Run the Express web server app
 ```
 node minimal_app
+=> listening on port 9999
 ```
 
-Test it in a browser, using the following urls:
+Test it in a browser, using the following url:
 ```
-localhost:9999
-=> Welcome to the Express App
+localhost:9999/login
+Username: test
+Password: pw
+Press buton "Login"
 ```
 
-Note that the font type has changed.
+Exprected result in the node.js terminal:
+```
+=> req.body.username : test
+```
