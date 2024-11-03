@@ -4,7 +4,7 @@ A quick tour of Node and Express
 * First, a minimal Web server app was created, see tag `minimal_app`
 * Then routing was added, see tag `routing`
 * For configuration setting, see tag `config`
-* Then templating was shown, using Handlebars tempale engine, see tag `templating`
+* Then templating was shown, using Handlebars template engine, see tag `templating`
 * Static file serving was then shown, see tag `static_files`
 
 Now comes form handling.
@@ -55,7 +55,7 @@ Password: pw
 Press buton "Login"
 ```
 
-Exprected result in the node.js terminal:
+Expected result in the node.js terminal:
 ```
 => req.body.username : test
 ```
