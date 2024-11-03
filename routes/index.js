@@ -8,5 +8,7 @@ const express_1 = __importDefault(require("express"));
 let router = express_1.default.Router();
 exports.router = router;
 router.get('/', (req, res) => {
-    res.send(`Index module processed ${req.url}`);
+    res.render('index', {
+        welcomeMsg: 'Welcome to the Express App',
+    });
 });

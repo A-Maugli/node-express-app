@@ -7,7 +7,11 @@ router.get('/',
         req: express.Request,
         res: express.Response
     ) => {
-        res.send(`Index module processed ${req.url}`);
+        res.render('index', 
+            {
+                welcomeMsg: 'Welcome to the Express App',
+            }
+        )
     });
 
 export { router };

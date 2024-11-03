@@ -1,35 +1,55 @@
 # node-express-app
 A quick tour of Node and Express
 
-Minimal web server app with config
+Minimal web server app with templating
 
-The config module was installed, using the following commands:
+The handlebars template engine was installed, using the following command:
 ```
-npm install config
-npm install @types/config --save-dev
+npm install hbs
 ```
 
-The configuration is in file `./config/default.json` 
-The `minimal_app.ts` was also changed, to read the configuration.
+The handlebars template files are in the `./views` directory.
+The `minimal_app.ts` was changed to register the template library and the 
+template engine:
+```
+import * as path from "path";
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+```
+
+The `routes/index.ts` was also modified, to render the `index.hbs` template:
+```
+res.render('index', 
+            {
+                welcomeMsg: 'Welcome to the Express App',
+            }
+        )
+```
 
 After cloning this repository, install node.js modules:
 ```
 npm install
 ```
 
-Run the minimal app:
+Compile TypeScript files to JavaScript
 ```
-# Compile TypeScript files to JavaScript
 npx tsc
+```
 
-# Run the Express web server minimal_app
+Run the Express web server app
+```
 node minimal_app
 ```
 
 Test it in a browser, using the following urls:
 ```
-localhost:3000
-=> Site can't be reached
 localhost:9999
-=> Index module processed /
+=> Welcome to the Express App
+=> (title: localhost:9999)
+localhost:9999/login
+=> Login module processed /login
+=> (title: localhost:9999/login)
+localhost:9999/log
+=> Cannot GET /log
+=> (title: Error)
 ```
