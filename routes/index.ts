@@ -10,6 +10,7 @@ router.get('/',
         res.render('index', 
             {
                 welcomeMsg: 'Welcome to the Express App',
+                title: 'Express App',
             }
         )
     });

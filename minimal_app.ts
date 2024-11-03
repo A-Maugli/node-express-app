@@ -27,6 +27,8 @@ else {
     console.log(`no port config found, using default port ${port}`);
 }
 
+app.use(express.static(path.join(__dirname, 'resources')));
+
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 })

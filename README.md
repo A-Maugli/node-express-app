@@ -1,29 +1,22 @@
 # node-express-app
 A quick tour of Node and Express
 
-Minimal web server app with templating
+Minimal web server app with templating and static files
 
-The handlebars template engine was installed, using the following command:
+The bootstrap module was installed:
 ```
-npm install hbs
+npm install bootstrap
 ```
 
 The handlebars template files are in the `./views` directory.
-The `minimal_app.ts` was changed to register the template library and the 
-template engine:
+The `minimal_app.ts` was changed to serve static files from the `resources` directory:
 ```
-import * as path from "path";
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'resources')))
 ```
 
-The `routes/index.ts` was also modified, to render the `index.hbs` template:
+`bootstrap.css` was copied to `resources\css`:
 ```
-res.render('index', 
-            {
-                welcomeMsg: 'Welcome to the Express App',
-            }
-        )
+cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./resources/css
 ```
 
 After cloning this repository, install node.js modules:
@@ -45,11 +38,6 @@ Test it in a browser, using the following urls:
 ```
 localhost:9999
 => Welcome to the Express App
-=> (title: localhost:9999)
-localhost:9999/login
-=> Login module processed /login
-=> (title: localhost:9999/login)
-localhost:9999/log
-=> Cannot GET /log
-=> (title: Error)
 ```
+
+Note that the font type has changed.

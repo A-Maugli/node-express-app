@@ -47,6 +47,7 @@ if (config_1.default.has(ConfigOptions.PORT)) {
 else {
     console.log(`no port config found, using default port ${port}`);
 }
+app.use(express_1.default.static(path.join(__dirname, 'resources')));
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
